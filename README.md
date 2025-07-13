@@ -44,8 +44,33 @@ A Spring Boot-based event-driven microservice that ingests review data from `.jl
 
 ---
 
-## Project Structure
+## Top level Project Structure
+```
+review-processor/
+├── lambda/
+│   └── ingest-metadata-lambda/
+│       ├── src/
+│       │   └── main/java/com/zuzu/lambda/handler/ReviewMetadataHandler.java
+│       ├── build.gradle
+│       └── README.md
+│
+├── review-service/
+│   ├── src/
+│   │   └── main/java/com/zuzu/reviewservice/...
+│   ├── build.gradle
+│   └── Dockerfile
+│
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml
+│
+├── docker-compose.yml         # Kafka, Zookeeper, LocalStack
+├── README.md                  # Monorepo overview (top-level)
+└── .dockerignore
 
+```
+
+## review-service Project Structure
 ```
 hotel-review-processor/
 ├── src/
