@@ -25,7 +25,51 @@ A Spring Boot-based event-driven microservice that ingests review data from `.jl
 
 <img width="1260" height="692" alt="image" src="https://github.com/user-attachments/assets/422c6c0b-2789-4096-a5e1-d66532d5ac61" />
 
+---
 
+## Event-Driven Architecture Flow
+
+### **1. Files Uploaded to S3**
+- JSONL (`.jl`) review files are uploaded to an S3 bucket.
+
+### **2. Lambda Triggered by S3**
+- Extracts metadata (bucket name, object key, timestamp).
+- Publishes metadata to Kafka topic `review_ingest`.
+- Monitorning message to another topic 'monitoring_logs'
+
+### **3. Kafka Message Received by Spring Boot Service**
+- Spring Boot consumer listens to `review_metadata` topic.
+- Uses metadata to fetch file contents from S3.
+
+### **4. Process File Line-by-Line**
+- Each `.jl` line is:
+  - Parsed and validated
+  - Logged to a `monitoring_logs` topic
+  - Stored to PostgreSQL if valid
+  - Rejected if invalid
+
+### **5. Retry + DLQ Handling**
+- Retries on failure (2 times)
+- Then moved to DLQ Kafka topic 'review_dlq'
+- A separate Lambda can retry from DLQ
+
+### **6. Processed File Moved**
+- Once complete, the file is moved to `processed` S3 bucket
+
+### **7. API Exposure**
+- REST API `/reviews?hotelId=10984` allows querying reviews
+
+---
+
+## 🔧 Technologies Used
+- **Java 17 / Spring Boot 3**
+- **Apache Kafka**
+- **PostgreSQL**
+- **AWS S3 / Lambda / EKS**
+- **Terraform + Kubernetes**
+- **Docker / LocalStack / GitHub Actions**
+
+---
 
 
 ## Tech Stack
