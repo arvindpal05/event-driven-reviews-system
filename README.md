@@ -20,6 +20,13 @@ A Spring Boot-based event-driven microservice that ingests review data from `.jl
 - **Docker + LocalStack Ready**: Supports local S3 & Kafka testing
 
 ---
+## HL Architecure 
+<img width="1265" height="766" alt="image" src="https://github.com/user-attachments/assets/862f45b8-8ea3-44ca-b069-b29d5729e703" />
+
+<img width="1260" height="692" alt="image" src="https://github.com/user-attachments/assets/422c6c0b-2789-4096-a5e1-d66532d5ac61" />
+
+
+
 
 ## Tech Stack
 
