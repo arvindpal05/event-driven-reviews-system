@@ -232,4 +232,4 @@ MIT License. Use freely, contributions welcome.
 
 ## Author
 
-Built by **Arvind Singh Pal** | [LinkedIn](https://www.linkedin.com/in/arvindsinghpal/) 
+Built by **Arvind Singh Pal** | [LinkedIn]([https://www.linkedin.com/in/arvindsinghpal/](https://www.linkedin.com/in/arvind-singh-pal/)) 
