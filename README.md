@@ -1,4 +1,4 @@
-# 🏨 Hotel Review Ingestion Microservice
+# Review Ingestion Microservice
 
 A Spring Boot-based event-driven microservice that ingests review data from `.jl` (JSON Lines) files stored in AWS S3. It is triggered by file metadata received via Kafka, parses and validates the reviews, and persists them to PostgreSQL with full logging and idempotency support.
 
