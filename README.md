@@ -50,23 +50,31 @@ review-processor/
 ├── lambda/
 │   └── ingest-metadata-lambda/
 │       ├── src/
-│       │   └── main/java/com/zuzu/lambda/handler/ReviewMetadataHandler.java
 │       ├── build.gradle
 │       └── README.md
-│
+
 ├── review-service/
 │   ├── src/
-│   │   └── main/java/com/zuzu/reviewservice/...
 │   ├── build.gradle
-│   └── Dockerfile
-│
+│   ├── Dockerfile
+│   └── k8s/                          # Kubernetes manifests (YAMLs)
+│       ├── deployment.yaml
+│       └── service.yaml
+
+├── infra/                            # Terraform infrastructure code
+│   ├── eks/                          
+│   ├── review-service/
+│   │   └── main.tf                   # Deployment and service Terraform
+│   └── variables.tf / outputs.tf
+
 ├── .github/
 │   └── workflows/
 │       └── ci-cd.yml
-│
-├── docker-compose.yml         # Kafka, Zookeeper, LocalStack
-├── README.md                  # Monorepo overview (top-level)
+
+├── docker-compose.yml
+├── README.md                         # Top-level monorepo readme
 └── .dockerignore
+
 
 ```
 
