@@ -38,7 +38,7 @@ A Spring Boot-based event-driven microservice that ingests review data from `.jl
 - Monitorning message to another topic 'monitoring_logs'
 
 ### **3. Kafka Message Received by Spring Boot Service**
-- Spring Boot consumer listens to `review_metadata` topic.
+- Spring Boot consumer listens to `review_ingest` topic.
 - Uses metadata to fetch file contents from S3.
 
 ### **4. Process File Line-by-Line**
@@ -47,6 +47,7 @@ A Spring Boot-based event-driven microservice that ingests review data from `.jl
   - Logged to a `monitoring_logs` topic
   - Stored to PostgreSQL if valid
   - Rejected if invalid
+  - pushed to topic 'monitoring_logs'
 
 ### **5. Retry + DLQ Handling**
 - Retries on failure (2 times)
@@ -58,6 +59,9 @@ A Spring Boot-based event-driven microservice that ingests review data from `.jl
 
 ### **7. API Exposure**
 - REST API `/reviews?hotelId=10984` allows querying reviews
+
+### **7. Monitoring **
+- Any monitoring tool like ELK can be integration on 'monitoring_logs'
 
 ---
 
