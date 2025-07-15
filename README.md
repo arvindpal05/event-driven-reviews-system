@@ -26,7 +26,30 @@ A Spring Boot-based event-driven microservice that ingests review data from `.jl
 <img width="1260" height="692" alt="image" src="https://github.com/user-attachments/assets/422c6c0b-2789-4096-a5e1-d66532d5ac61" />
 
 ---
+## Capacity Estimation 
+- Assumption 
+  - DAU = 1 million
+  - Daily message Per user  = 2
+  - Each message size = 1kb (no pic and video allowed)
 
+**Throughput** 
+- RPS = 1x10^6x2/10^5 
+     = 20 request/per sec
+
+**Network Bandwidth** 
+  - RPSxdatasize = 20x1KB 
+                = 20KBps
+
+**Data Storage**
+- data Per sec = 20KB
+- Daily data = 2x10^6x10^3
+   = 2x10^9 ~ 2GB
+- Yearly data = data per sec x 4x10^7 
+            = 20KB x 4 x 10^7 ~ 20 x10
+            = 3 x 4 x10^7~ 800x10^9 
+            = 800GB 
+
+---
 ## Event-Driven Architecture Flow
 
 ### **1. Files Uploaded to S3**
